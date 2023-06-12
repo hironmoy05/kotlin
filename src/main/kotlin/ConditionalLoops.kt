@@ -228,4 +228,32 @@ class ConditionalLoops {
 
         println("The numbers you entered, from which this is the largest one $max");
     }
+
+    // Intermediate
+    // Factorial Program
+    fun factorial(n: Int) {
+        if (n < 0)
+            return;
+
+        var result: Int = 1;
+        for (i in 2..n)
+            result *= i;
+
+        println(result);
+    }
+
+    // calculate Electricity Bill
+    fun electricBill(unit: Double, rsPerUnit: Double) {
+        if (unit <= 0 || rsPerUnit <= 0)
+            return;
+
+        println(unit * rsPerUnit);
+    }
+
+    fun electricBill(unit: Int, rsPerUnit: Double) {
+        if (unit <= 0 || rsPerUnit <= 0)
+            return;
+
+        println(unit * rsPerUnit);
+    }
 }

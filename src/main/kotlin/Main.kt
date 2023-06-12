@@ -16,6 +16,6 @@ fun main(args: Array<String>) {
     val ba: Basics = Basics();
     val con: ConditionalLoops = ConditionalLoops();
 
-    con.largestNum();
+    con.electricBill(5, 7.21);
 }
 
