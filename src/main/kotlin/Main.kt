@@ -16,6 +16,7 @@ fun main(args: Array<String>) {
     val ba: Basics = Basics();
     val con: ConditionalLoops = ConditionalLoops();
 
-    con.electricBill(5, 7.21);
+    val nums: Array<Int> = arrayOf(85, 90, 95, 91, 93);
+    con.calculateAverageMarks(nums);
 }
 

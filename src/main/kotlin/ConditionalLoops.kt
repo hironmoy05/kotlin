@@ -1,4 +1,5 @@
-import java.util.Scanner
+import java.util.*
+import kotlin.math.pow
 
 class ConditionalLoops {
     val scanner: Scanner = Scanner(System.`in`);
@@ -173,7 +174,7 @@ class ConditionalLoops {
         var p: Int = 1;
         var s: Int = 0;
 
-        while(num > 0) {
+        while (num > 0) {
             val lastDigit: Int = num % 10;
             p *= lastDigit;
             s += lastDigit;
@@ -192,20 +193,22 @@ class ConditionalLoops {
         }
 
         for (i in 2 until n) {
-            if (n % i == 0)
-                print("$i ");
+            if (n % i == 0) {
+            }
+            print("$i ");
         }
     }
 
     // Take integer inputs till the user enters 0 and print the sum of all numbers (HINT: while loop)
     fun printSum() {
         var sum: Int = 0;
-        while(true) {
+        while (true) {
             print("Enter a number: ");
             val num = scanner.nextInt();
 
-            if (num == 0)
-                break;
+            if (num == 0) {
+            }
+            break;
 
             sum += num;
         }
@@ -217,11 +220,12 @@ class ConditionalLoops {
     fun largestNum() {
         var max: Int = Integer.MIN_VALUE;
 
-        while(true) {
+        while (true) {
             val num: Int = scanner.nextInt();
 
-            if (num == 0)
-                break;
+            if (num == 0) {
+            }
+            break;
 
             max = num.coerceAtLeast(max);
         }
@@ -236,8 +240,9 @@ class ConditionalLoops {
             return;
 
         var result: Int = 1;
-        for (i in 2..n)
+        for (i in 2..n) {
             result *= i;
+        }
 
         println(result);
     }
@@ -255,5 +260,98 @@ class ConditionalLoops {
             return;
 
         println(unit * rsPerUnit);
+    }
+
+//    Calculate Discount Of Product
+    fun calculateDiscount(price: Int) {
+        val discount: Double = price * .08;
+        val discountedPrice: Double = price - (price * .08);
+
+    println("Total Discount ${String.format("%.2f", discount)}");
+    println("Discounted Price ${String.format("%.2f", discountedPrice)}");
+    }
+    fun calculateDiscount(price: Double) {
+        val discount: Double = price * .08;
+        val discountedPrice: Double = price - (price * .08);
+
+        println("Total Discount ${String.format("%.2f", discount)}");
+        println("Discounted Price ${String.format("%.2f", discountedPrice)}");
+    }
+
+    //    Calculate Commission Percentage
+    fun calculateCommissionPercentage(totalAmount: Double, commissionAmount: Double) {
+        val commissionPercentage: Double = (commissionAmount / totalAmount) * 100;
+
+        println("Commission percentage " + String.format("%.2f", commissionPercentage) + "%")
+    }
+    fun calculateCommissionPercentage(totalAmount: Int, commissionAmount: Int) {
+        val commissionPercentage: Double = (commissionAmount.toDouble() / totalAmount) * 100;
+
+        println("Commission percentage " + String.format("%.2f", commissionPercentage) + "%")
+    }
+
+    // power
+    fun power(num: Int, p: Int) {
+        println(num.toDouble().pow(p));
+    }
+
+    //    Calculate Depreciation of Value
+    fun calculateDepreciationValue(initialPrice: Double, salvageValue: Double, usefulLifeYears: Int) {
+        val depreciationValue: Double = (initialPrice - salvageValue) / usefulLifeYears
+
+        println("Depreciation value per year: $depreciationValue")
+    }
+    fun calculateDepreciationValue(initialPrice: Int, salvageValue: Int, usefulLifeYears: Int) {
+        val depreciationValue: Double = (initialPrice.toDouble() - salvageValue) / usefulLifeYears
+
+        println("Depreciation value per year: $depreciationValue")
+    }
+
+    //    Calculate Batting Average
+    fun calculateBattingAverage(totalRunsScored: Int, numberOfDismissals: Int) {
+        val battingAverage: Double = totalRunsScored.toDouble() / numberOfDismissals
+        println("Batting Average: $battingAverage")
+    }
+
+    //    Calculate CGPA
+    fun calculateCGPA() {
+        val creditHours1: Int = 3;
+        val creditHours2: Int = 4;
+        val creditHours3: Int = 3;
+        val creditHours4: Int = 2;
+        val course1GradePoints: Float = 4.0F * creditHours1;
+        val course2GradePoints: Float = 3.0F * creditHours2;
+        val course3GradePoints: Float = 4.0F * creditHours3;
+        val course4GradePoints: Float = 2.0F * creditHours4;
+
+        val totalGradePoints: Float = course1GradePoints + course2GradePoints + course3GradePoints + course4GradePoints;
+        val totalCreditHours: Int = creditHours1 + creditHours2 + creditHours3 + creditHours4;
+
+        val cgpa: Double = totalGradePoints.toDouble() / totalCreditHours;
+
+        println("CGPA: ${String.format("%.2f", cgpa)}");
+    }
+
+    // Calculate compound Interest
+    fun calculateCompoundInterest(
+        principal: Int,
+        annualInterestRate: Double,
+        periodsPerYear: Int,
+        numberOfYears: Int) {
+
+        val totalAmountAOfCompoundInterest = principal * (1 + annualInterestRate / periodsPerYear).pow((periodsPerYear * numberOfYears).toDouble());
+
+        println("Total amount of compound interest ${String.format("%.2f", totalAmountAOfCompoundInterest)}");
+    }
+
+    // Calculate Average Marks
+    fun calculateAverageMarks(marks: Array<Int>) {
+        var totalMarks: Double = 0.0;
+        for (i in marks)
+            totalMarks += i;
+
+        val average: Double = totalMarks / marks.size;
+
+        println("Average marks: $average");
     }
 }
