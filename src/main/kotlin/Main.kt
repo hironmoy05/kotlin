@@ -16,7 +16,6 @@ fun main(args: Array<String>) {
     val ba: Basics = Basics();
     val con: ConditionalLoops = ConditionalLoops();
 
-    val nums: Array<Int> = arrayOf(85, 90, 95, 91, 93);
-    con.calculateAverageMarks(nums);
+    println(con.calculatePermutation(5, 2));
 }
 

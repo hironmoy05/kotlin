@@ -354,4 +354,45 @@ class ConditionalLoops {
 
         println("Average marks: $average");
     }
+
+    // Armstrong number
+    private fun isArmstrong(num: Int): Boolean {
+        val originalValue: Int = num;
+        var n: Int = num;
+        var sum: Int = 0;
+        val size: Int = num.toString().length;
+
+        while(n > 0) {
+            val lastDigit: Int = n % 10;
+            sum += lastDigit.toDouble().pow(size.toDouble()).toInt();
+            n /= 10;
+        }
+
+        return sum == num;
+    }
+
+    fun printArmStrongNumbers(min: Int, max: Int) {
+        for (i in min..max)
+            if (isArmstrong(i))
+                print("$i ");
+    }
+
+    // Find Ncr & Npr
+    private fun factorial2(n: Int): Long {
+        var result: Long = 1
+        for (i in 1..n) {
+            result *= i
+        }
+        return result
+    }
+    fun calculateCombination(n: Int, r: Int): Long {
+        return factorial2(n) / (factorial2(r) * factorial2(n - r))
+    }
+
+    fun calculatePermutation(n: Int, r: Int): Long {
+        return factorial2(n) / factorial2(n - r)
+    }
+
+    // Reverse A String
+
 }
