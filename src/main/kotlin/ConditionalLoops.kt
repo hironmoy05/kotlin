@@ -1,3 +1,4 @@
+import java.time.YearMonth
 import java.util.*
 import kotlin.math.pow
 
@@ -393,6 +394,135 @@ class ConditionalLoops {
         return factorial2(n) / factorial2(n - r)
     }
 
-    // Reverse A String
+    // Reverse a string
+    fun reverseString(str: String) {
+        val strArr: Array<String> = str.split("".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray();
+        val reverse = StringBuilder()
+        for (i in strArr.indices.reversed()) reverse.append(strArr[i])
+        println(reverse.toString())
+    }
+
+    fun reverseString2(str: String): String {
+        val strArr: Array<String> = str.split("").filter{it.isNotBlank()}.toTypedArray();
+        val sb: StringBuilder = StringBuilder();
+
+        for (i in strArr.size - 1 downTo 0)
+            sb.append(strArr[i]);
+
+        return sb.toString();
+    }
+
+    fun reversString3(str: String): String {
+        return StringBuilder(str).reverse().toString();
+    }
+
+    //    Find if a number is palindrome or not
+    fun isPalindrome(n: Int): Boolean {
+        if (n < 0)
+            return false;
+
+        var reverseNumber: Int = 0;
+        var num: Int = n;
+
+        while (num > 0) {
+            val lastDigit: Int = num % 10;
+            reverseNumber = reverseNumber * 10 + lastDigit;
+            num /= 10;
+        }
+
+        return n == reverseNumber;
+    }
+
+    //    HCF of two numbers by Euclidean Algorithm:
+    fun findHCF(a: Int, b: Int): Int {
+        var a = a
+        var b = b
+        while (b != 0) {
+            val temp = b
+            b = a % b
+            a = temp
+        }
+        return a
+    }
+
+    //    Prime Factorization:
+    //    The prime factorization method involves finding the prime factors of both numbers and then identifying the common factors.
+    fun findHCF2(a: Int, b: Int): Int {
+        val smaller = a.coerceAtMost(b)
+        var hcf = 1
+        for (i in 2..smaller) {
+            if (a % i == 0 && b % i == 0) {
+                hcf = i
+            }
+        }
+        return hcf
+    }
+
+    // Vowel or Constant
+    fun findLCM(a: Int, b: Int): Int {
+        val hcf: Int = findHCF(a, b);
+
+        return (a * b) / hcf;
+    }
+
+    fun vowelOrConsonant(c: Char) {
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+            println("$c is a vowel");
+        else
+            println("$c is a consonant");
+    }
+
+    // Find perfect Number
+    fun perfectNumber(num: Int): Boolean {
+        var sum: Int = 0;
+        for (i in 1 until num) {
+            if (num % i == 0)
+                sum += i;
+        }
+
+        return sum == num;
+    }
+
+    // Check Leap year or not
+    fun isLeapYear(year: Int) {
+        val divideBy4: Boolean = year % 4 == 0;
+        val divideBy400: Boolean = year % 400 == 0;
+        val divideBy100: Boolean = year % 100 != 0;
+
+        if (divideBy4 && (divideBy400 || divideBy100))
+            println("$year is a leap year");
+        else
+            println("$year is not a leap year");
+    }
+
+    //    Kunal is allowed to go out with his friends only on the even days of a given month. Write a program to count the number of days he can go out in the month of August.August
+    fun numberOfDaysAllowedToGo(year: Int, month: Int) {
+        val yearMonth = YearMonth.of(year, month)
+        val numberOfDaysInMonth = yearMonth.lengthOfMonth()
+        var count = 0
+        for (i in 1..numberOfDaysInMonth) {
+            if (i % 2 != 0) count++
+        }
+        println(count.toString() + " days he can go out in the month of " + yearMonth.month)
+    }
+
+    //    Write a program to print the sum of negative numbers, sum of positive even numbers and the sum of positive odd numbers from a list of numbers (N) entered by the user. The list terminates when the user enters a zero.
+    fun sumOfNegNumPosEvenOddNum() {
+        val scanner = Scanner(System.`in`)
+        var sumOfNegativeNumbers = 0
+        var sumOfEvenNumbers = 0
+        var sumOfOddNumbers = 0
+        while (true) {
+            val num = scanner.nextInt()
+            if (num == 0) break else if (num < 0) sumOfNegativeNumbers += num else if (num % 2 == 0) sumOfEvenNumbers += num else sumOfOddNumbers += num
+        }
+        println(
+            """
+            Sum of Negative Numbers: $sumOfNegativeNumbers
+            Sum of Even Numbers: $sumOfEvenNumbers
+            Sum of Odd Numbers: $sumOfOddNumbers
+            """.trimIndent()
+        )
+    }
 
 }
